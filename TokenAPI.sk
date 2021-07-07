@@ -1,0 +1,62 @@
+options:
+	Prefix: §8» §7ServerNAME §8×
+	NoPerm: §8» §7ServerNAME §8× §cDazu hast du keine Permission§8!
+	
+every 1 second:
+	loop all players:
+		if {Tokens::%loop-player's uuid%} is not set:
+			set {Tokens::%loop-player's uuid%} to 0 
+			
+			
+command /tokens [<offline player>]:
+	aliases: geld,money,münzen,taler,para,coins,moneten
+	trigger:
+		if arg-1 is not set:
+			send "{@Prefix} §7Du hast noch §6%{Tokens::%player's uuid%}% §7Tokens§8!"
+		if arg-1 is set:
+			send "{@Prefix} §7%arg-1% hat noch §6%{Tokens::%arg-1's uuid%}% §7Tokens§8!"
+			
+command /addtokens [<offline player>] [<number>]:
+	aliases: addgeld,addmoney, addmünzen, addtaler, addpara, addcoins, addmoneten
+	permission: server.admin
+	permission message: {@NoPerm}
+	trigger:
+		if arg-1 and arg-2 is not set:
+			send "{@Prefix} &7Benutze&8: &6/addtokens &8(&6Spieler&8) (&6Tokens&8)"
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "{@Prefix} &7Bitte gebe &6Tokens &7an&8!"
+		if arg-1 and arg-2 is set:
+			add arg-2 to {Tokens::%uuid of arg-1%}
+			send "{@Prefix} §7Du hast &6%arg-1% %arg-2% &7Tokens gegeben§8" to player
+			send "{@Prefix} &7Dir wurden &6%arg-2% &7Tokens von &6%player% &7gegeben&8!" to arg-1
+			
+command /settokens [<offline player>] [<number>]:
+	aliases: setgeld,setmoney,setmünzen,settaler,setpara,setcoins,setmoneten
+	permission: server.admin
+	permission message: {@NoPerm}
+	trigger:
+		if arg-1 and arg-2 is not set:
+			send "{@Prefix} &7Benutze&8: &6/settokens &8(&6Spieler&8) (&6Tokens&8)"
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "{@Prefix} &7Bitte gebe &6Tokens &7an&8!"
+		if arg-1 and arg-2 is set:
+			set {Tokens::%uuid of arg-1%} to arg-2 
+			send "{@Prefix} §7Du hast &6%arg-1% %arg-2% &7Tokens gesetzt§8" to player
+			send "{@Prefix} &7Dir wurden &6%arg-2% &7Tokens von &6%player% &7gesetzt&8!" to arg-1
+			
+command /removetokens [<offline player>] [<number>]:
+	aliases: removegeld,removemoney,removemünzen,removetaler,removepara,removecoins,removemoneten
+	permission: server.admin
+	permission message: {@NoPerm}
+	trigger:
+		if arg-1 and arg-2 is not set:
+			send "{@Prefix} &7Benutze&8: &6/removetokens &8(&6Spieler&8) (&6Tokens&8)"
+		if arg-1 is set:
+			if arg-2 is not set:
+				send "{@Prefix} &7Bitte gebe &6Tokens &7an&8!"
+		if arg-1 and arg-2 is set:
+			remove arg-2 from {Tokens::%uuid of arg-1%}
+			send "{@Prefix} §7Du hast &6%arg-1% %arg-2% &7Tokens geremoved§8" to player
+			send "{@Prefix} &7Dir wurden &6%arg-2% &7Tokens von &6%player% &7geremoved&8!" to arg-1
