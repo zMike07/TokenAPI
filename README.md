@@ -6,7 +6,7 @@ Das Skript wurde in der Version 2.2-36Dev Geschrieben und wurde mit UUID gemacht
 Bei Fragen melde dich bei zMike | Mike#5511 Per Discord
 
 
-# // Commands \\ #
+# // Commands \\\ #
 
 /tokens (Spieler) | Siehe die Tokens von dir oder eines Mitspielers
 /addtokens (Spieler) (tokens) | Füge eine bestimmte anzahl an Tokens eines Spielers hinzu
