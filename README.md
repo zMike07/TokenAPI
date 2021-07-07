@@ -9,6 +9,7 @@ Bei Fragen melde dich bei zMike | Mike#5511 Per Discord
 # // Commands \\\ #
 
 /tokens (Spieler) | Siehe die Tokens von dir oder eines Mitspielers
+
 /addtokens (Spieler) (tokens) | Füge eine bestimmte anzahl an Tokens eines Spielers hinzu
 /settokens (Spieler) (tokens) | setze eine bestimmten Spieler eine anzahl an Tokens
 
